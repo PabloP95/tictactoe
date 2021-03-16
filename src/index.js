@@ -51,6 +51,8 @@ class Game extends React.Component{
         if (winner){
             status = "Winner " + winner;
         }
+        else if(this.state.stepNumber === 9 && !winner)
+            status = 'Draw';
         else {
             status = "Next player: " + (this.state.xIsNext ? 'X' : 'O');
         }
@@ -78,10 +80,23 @@ class Board extends React.Component {
             onClick={() => this.props.onClick(i)}
         />);
     }
+    /*renderSquares(fila) {
+        let arrSquares = [];
+        for (let i = 0; i < 3; i++){
+            for (let j = 0; j < 1; j++){
+                arrSquares.push((<Square
+                value={this.props.squares[i * fila + j]}
+                onClick={() => this.props.onClick(i * fila + j)}
+            />));
+            }
+        }
+        return arrSquares;
+    }*/
     render() {
         return (
             <div>
                 <div className='board-row'>
+                    {/*this.renderSquares(0)*/}
                     {this.renderSquare(0)}
                     {this.renderSquare(1)}
                     {this.renderSquare(2)}
